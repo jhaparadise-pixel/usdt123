@@ -1,0 +1,30 @@
+<h3>内部测试钱包（Mock）</h3>
+
+<button onclick="genWallet()">生成测试钱包</button>
+
+<p>地址：<span id="addr">-</span></p>
+<p>私钥：<span id="pk">-</span></p>
+<p>余额：<span id="bal">0</span> USDT</p>
+
+<p style="color:red;font-size:12px;">
+⚠ 内部测试用，不是真实 USDT 钱包
+</p>
+
+<script>
+function rand(len) {
+  return Math.random().toString(36).substring(2, 2 + len).toUpperCase();
+}
+
+function genWallet() {
+  const address = "TEST-USDT-" + rand(10);
+  const privateKey = "TEST-PRIVATE-KEY-" + rand(16);
+
+  localStorage.setItem("mock_addr", address);
+  localStorage.setItem("mock_pk", privateKey);
+  localStorage.setItem("mock_balance", "1000"); // 内测初始余额
+
+  document.getElementById("addr").innerText = address;
+  document.getElementById("pk").innerText = privateKey;
+  document.getElementById("bal").innerText = "1000";
+}
+</script>
